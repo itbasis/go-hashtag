@@ -1,4 +1,4 @@
-module dev.itbasis/go-hashtag
+module github.com/itbasis/go-hashtag
 
 go 1.19
 
