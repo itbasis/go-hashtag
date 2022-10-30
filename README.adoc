@@ -10,7 +10,7 @@ image:https://img.shields.io/github/v/release/itbasis/go-hashtag?include_prerele
 == Installation
 
 ```
-go get -u github.com/itbasis/go-hashtag@v0.0.1
+go get -u github.com/itbasis/go-hashtag@latest
 ```
 
 == Example
