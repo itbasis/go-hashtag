@@ -2,3 +2,27 @@
 ---
 
 Library for working with hashtags in the text
+
+image:https://img.shields.io/github/checks-status/itbasis/go-hashtag/main[GitHub branch checks state]
+image:https://img.shields.io/github/go-mod/go-version/itbasis/go-hashtag[GitHub go.mod Go version]
+image:https://img.shields.io/github/v/release/itbasis/go-hashtag?include_prereleases[GitHub release (release name instead of tag name)]
+
+== Installation
+
+```
+go get -u github.com/itbasis/go-hashtag@v0.0.1
+```
+
+== Example
+
+[source,go]
+```
+package main
+
+import "github.com/itbasis/go-hashtag"
+
+func func main() {
+  text := "An example of a text with a #hashtag"
+  hashTags := NewParser(false).Parse(text)
+}
+```

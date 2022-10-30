@@ -25,6 +25,8 @@ func NewParser(caseSensitive bool) *Parser {
 	return p
 }
 
+// Parse Parsing text for hashtags. If no hashtags were found, nil will be returned.
+// Returns a map where hashtag is the key and value is the number uses of the hashtag in the text.
 func (receiver *Parser) Parse(text string) map[string]int {
 	if len(text) == 0 {
 		return nil

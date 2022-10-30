@@ -1,10 +1,11 @@
-package go_hashtag
+package go_hashtag_test
 
 import (
 	"fmt"
 	"log"
 	"testing"
 
+	go_hashtag "github.com/itbasis/go-hashtag"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -41,7 +42,7 @@ func TestParser_Parse(t *testing.T) {
 		t.Run(
 			fmt.Sprintf("#%d", i), func(t *testing.T) {
 				log.Println("test text:", test.text)
-				assert.EqualValues(t, test.want, NewParser(test.caseSensitive).Parse(test.text))
+				assert.EqualValues(t, test.want, go_hashtag.NewParser(test.caseSensitive).Parse(test.text))
 			},
 		)
 	}
