@@ -43,6 +43,10 @@ jobs:
           # More details in https://github.com/snyk/actions#getting-your-snyk-token
           # or you can signup for free at https://snyk.io/login
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: your-image
+          args: --file=Dockerfile
+          json: true
 
       - uses: garethr/snyk-to-sarif@master
       - uses: actions/upload-artifact@v2
