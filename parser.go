@@ -1,0 +1,72 @@
+package go_hashtag
+
+import (
+	"log"
+	"regexp"
+	"strings"
+)
+
+const (
+	reHashTag = `#\w+`
+)
+
+type Parser struct {
+	caseSensitive bool
+	re            *regexp.Regexp
+}
+
+func NewParser(caseSensitive bool) *Parser {
+	p := &Parser{
+		caseSensitive: caseSensitive,
+	}
+
+	p.re = regexp.MustCompile(reHashTag)
+
+	return p
+}
+
+func (receiver *Parser) Parse(text string) map[string]int {
+	if len(text) == 0 {
+		return nil
+	}
+
+	t := strings.ReplaceAll(text, ` `, "\n")
+	// t := text
+	log.Printf("t: `%s`", t)
+
+	log.Printf("found: %++v\n", receiver.re.FindAllStringSubmatch(t, -1))
+	found := receiver.re.FindAllString(t, -1)
+	log.Printf("found: %++v\n", found)
+
+	l := len(found)
+
+	if l == 0 {
+		return nil
+	}
+
+	result := make(map[string]int, l)
+
+	for _, s := range found {
+		if s[len(s)-1:] == "#" {
+			continue
+		}
+
+		key := strings.TrimSpace(s)[1:]
+		if !receiver.caseSensitive {
+			key = strings.ToLower(key)
+		}
+		log.Printf("key: `%s`", key)
+
+		if _, exist := result[key]; exist {
+			result[key]++
+		} else {
+			result[key] = 1
+		}
+	}
+
+	if len(result) == 0 {
+		return nil
+	}
+
+	return result
+}

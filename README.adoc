@@ -1,0 +1,4 @@
+= Go HashTag
+---
+
+Library for working with hashtags in the text
