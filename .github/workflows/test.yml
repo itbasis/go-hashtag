@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Check modules
     steps:
-      - users: actions/setup-go@v4
+      - uses: actions/setup-go@v4
         with:
           go-version: '1.19.8'
       - uses: actions/checkout@v3
