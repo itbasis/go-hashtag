@@ -1,4 +1,4 @@
-package go_hashtag_test
+package hashtag_test
 
 import (
 	"fmt"

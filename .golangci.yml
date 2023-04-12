@@ -39,7 +39,6 @@ linters:
     - prealloc
     - promlinter
     - revive
-    - structcheck
     - wastedassign
     - tagliatelle
     - tenv
@@ -59,3 +58,5 @@ linters-settings:
   varnamelen:
     ignore-type-assert-ok: true
     ignore-map-index-ok: true
+    ignore-names:
+      - l

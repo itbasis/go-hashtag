@@ -1,4 +1,4 @@
-package go_hashtag
+package hashtag
 
 import (
 	"log"
@@ -16,13 +16,13 @@ type Parser struct {
 }
 
 func NewParser(caseSensitive bool) *Parser {
-	p := &Parser{
+	parser := &Parser{
 		caseSensitive: caseSensitive,
 	}
 
-	p.re = regexp.MustCompile(reHashTag)
+	parser.re = regexp.MustCompile(reHashTag)
 
-	return p
+	return parser
 }
 
 // Parse Parsing text for hashtags. If no hashtags were found, nil will be returned.
@@ -57,13 +57,10 @@ func (receiver *Parser) Parse(text string) map[string]int {
 		if !receiver.caseSensitive {
 			key = strings.ToLower(key)
 		}
+
 		log.Printf("key: `%s`", key)
 
-		if _, exist := result[key]; exist {
-			result[key]++
-		} else {
-			result[key] = 1
-		}
+		result[key]++
 	}
 
 	if len(result) == 0 {
