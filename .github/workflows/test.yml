@@ -17,14 +17,13 @@ jobs:
       - uses: actions/checkout@v3
       - run: go mod tidy && git diff --exit-code go.mod go.sum
 
-  test:
+  tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         go_version:
           - "1.19.8"
           - "1.20.3"
-    #noinspection UndefinedVariable
     name: Go ${{ matrix.go_version }}
     steps:
       - uses: actions/checkout@v3
@@ -32,7 +31,6 @@ jobs:
       - uses: actions/setup-go@v4
         with:
           cache: true
-          #noinspection UndefinedVariable
           go-version: ${{ matrix.go_version }}
 
       - run: go get -u golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest && go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
