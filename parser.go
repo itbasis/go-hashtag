@@ -12,7 +12,8 @@ const (
 
 type Parser struct {
 	caseSensitive bool
-	re            *regexp.Regexp
+
+	re *regexp.Regexp
 }
 
 func NewParser(caseSensitive bool) *Parser {
@@ -32,12 +33,11 @@ func (receiver *Parser) Parse(text string) map[string]int {
 		return nil
 	}
 
-	t := strings.ReplaceAll(text, ` `, "\n")
-	// t := text
-	log.Printf("t: `%s`", t)
+	text = strings.ReplaceAll(text, ` `, "\n")
+	log.Printf("t: `%s`", text)
 
-	log.Printf("found: %++v\n", receiver.re.FindAllStringSubmatch(t, -1))
-	found := receiver.re.FindAllString(t, -1)
+	log.Printf("found: %++v\n", receiver.re.FindAllStringSubmatch(text, -1))
+	found := receiver.re.FindAllString(text, -1)
 	log.Printf("found: %++v\n", found)
 
 	l := len(found)

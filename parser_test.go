@@ -1,49 +1,56 @@
 package hashtag_test
 
 import (
-	"fmt"
-	"log"
 	"testing"
 
-	go_hashtag "github.com/itbasis/go-hashtag"
-	"github.com/stretchr/testify/assert"
+	"github.com/itbasis/go-hashtag"
+	. "github.com/onsi/ginkgo/v2"
+	. "github.com/onsi/gomega"
 )
 
-func TestParser_Parse(t *testing.T) {
-	tests := []struct {
-		caseSensitive bool
-		text          string
-		want          map[string]int
-	}{
-		{},
-		{text: "qw"},
-		{text: "qw qw"},
-		{text: "$qw"},
-		{text: "#1qw2", want: map[string]int{"1qw2": 1}},
-		{text: "#12_", want: map[string]int{"12_": 1}},
-		{text: "#1_2", want: map[string]int{"1_2": 1}},
-		{text: "#12", want: map[string]int{"12": 1}},
-		{text: "#qw", want: map[string]int{"qw": 1}},
-		{text: "#qw #", want: map[string]int{"qw": 1}},
-		{text: " #qw", want: map[string]int{"qw": 1}},
-		{text: "#q1w", want: map[string]int{"q1w": 1}},
-		{text: "#q12w", want: map[string]int{"q12w": 1}},
-		{text: "#qw1", want: map[string]int{"qw1": 1}},
-		{text: "#qw12", want: map[string]int{"qw12": 1}},
-		{text: "#qw$", want: map[string]int{"qw": 1}},
-		{text: "#qw qw", want: map[string]int{"qw": 1}},
-		{text: "#qw #qw", want: map[string]int{"qw": 2}},
-		{text: "#qw #Qw", want: map[string]int{"qw": 2}},
-		{text: "#qw #Qw", want: map[string]int{"qw": 2}},
-		{caseSensitive: true, text: "#qw #Qw", want: map[string]int{"qw": 1, "Qw": 1}},
-		{text: "#qw sd #qw", want: map[string]int{"qw": 2}},
-	}
-	for i, test := range tests {
-		t.Run(
-			fmt.Sprintf("#%d", i), func(t *testing.T) {
-				log.Println("test text:", test.text)
-				assert.EqualValues(t, test.want, go_hashtag.NewParser(test.caseSensitive).Parse(test.text))
-			},
-		)
-	}
+func TestParser(t *testing.T) {
+	RegisterFailHandler(Fail)
+	RunSpecs(t, "HashTag Parser")
 }
+
+var _ = Describe(
+	"Parsing", func() {
+		DescribeTable(
+			"no hashtags", func(text string, sensitivity bool) {
+				Ω(hashtag.NewParser(sensitivity).Parse(text)).To(BeNil())
+			},
+			Entry(nil, "", false),
+			Entry(nil, "qw", false),
+			Entry(nil, "qw", true),
+			Entry(nil, "Qw", false),
+			Entry(nil, "Qw", true),
+			Entry(nil, "qw qw", false),
+			Entry(nil, "$qw", false),
+		)
+
+		DescribeTable(
+			"Success parsing", func(text string, sensitivity bool, want map[string]int) {
+				parser := hashtag.NewParser(sensitivity)
+				Ω(parser.Parse(text)).To(Equal(want))
+			},
+			Entry(nil, "#1qw2", false, map[string]int{"1qw2": 1}),
+			Entry(nil, "#12_", false, map[string]int{"12_": 1}),
+			Entry(nil, "#1_2", false, map[string]int{"1_2": 1}),
+			Entry(nil, "#12", false, map[string]int{"12": 1}),
+			Entry(nil, "#qw", false, map[string]int{"qw": 1}),
+			Entry(nil, "#qw #", false, map[string]int{"qw": 1}),
+			Entry(nil, " #qw", false, map[string]int{"qw": 1}),
+			Entry(nil, "#q1w", false, map[string]int{"q1w": 1}),
+			Entry(nil, "#q12w", false, map[string]int{"q12w": 1}),
+			Entry(nil, "#qw1", false, map[string]int{"qw1": 1}),
+			Entry(nil, "#qw12", false, map[string]int{"qw12": 1}),
+			Entry(nil, "#qw$", false, map[string]int{"qw": 1}),
+			Entry(nil, "#qw qw", false, map[string]int{"qw": 1}),
+			Entry(nil, "#qw #qw", false, map[string]int{"qw": 2}),
+			Entry(nil, "#qw #Qw", false, map[string]int{"qw": 2}),
+			Entry(nil, "#qw #Qw", false, map[string]int{"qw": 2}),
+			Entry(nil, "#qw #Qw", true, map[string]int{"qw": 1, "Qw": 1}),
+			Entry(nil, "#qw sd #qw", false, map[string]int{"qw": 2}),
+		)
+	},
+)
