@@ -1,6 +1,9 @@
 .DS_Store
 tmp.*
 
+Makefile
+report-*.xml
+
 # IntelliJ IDEs
 .idea/*
 !.idea/externalDependencies.xml
