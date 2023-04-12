@@ -24,6 +24,7 @@ jobs:
         go_version:
           - "1.19.8"
           - "1.20.3"
+    #noinspection UndefinedVariable
     name: Go ${{ matrix.go_version }}
     steps:
       - uses: actions/checkout@v3
@@ -31,6 +32,7 @@ jobs:
       - uses: actions/setup-go@v4
         with:
           cache: true
+          #noinspection UndefinedVariable
           go-version: ${{ matrix.go_version }}
 
       - run: go get -u golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest && go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
@@ -38,6 +40,8 @@ jobs:
 
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
 
       - run: go get github.com/onsi/ginkgo/v2@latest && go install github.com/onsi/ginkgo/v2/ginkgo
       - run: $(go env GOPATH)/bin/ginkgo --junit-report=report-ginkgo.xml ./...
