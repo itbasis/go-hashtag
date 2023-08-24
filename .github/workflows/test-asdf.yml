@@ -1,26 +1,21 @@
-name: Tests
-on:
-  - push
-  - pull_request
+name: test Go using asdf
 
-permissions:
-  contents: read
+on:
+  push:
+  pull_request:
 
 jobs:
-  mod:
+  test-mod:
     runs-on: ubuntu-latest
-    name: Check modules
+
     steps:
-      - uses: actions/setup-go@v4
-        with:
-          go-version: '1.19.8'
+      - uses: asdf-vm/actions/install@v2
       - uses: actions/checkout@v3
       - run: go mod tidy && git diff --exit-code go.mod go.sum
 
-  tests:
+  test-asdf:
     runs-on: ubuntu-latest
-    #noinspection UndefinedVariable
-    name: Go ${{ matrix.go_version }}
+
     steps:
       - uses: actions/checkout@v3
 
