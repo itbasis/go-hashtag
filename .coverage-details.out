@@ -1,0 +1,15 @@
+mode: atomic
+github.com/itbasis/go-hashtag/parser.go:19.44,27.2 3 25
+github.com/itbasis/go-hashtag/parser.go:31.59,32.20 1 25
+github.com/itbasis/go-hashtag/parser.go:32.20,34.3 1 1
+github.com/itbasis/go-hashtag/parser.go:36.2,45.12 7 24
+github.com/itbasis/go-hashtag/parser.go:45.12,47.3 1 6
+github.com/itbasis/go-hashtag/parser.go:49.2,51.26 2 18
+github.com/itbasis/go-hashtag/parser.go:51.26,52.26 1 23
+github.com/itbasis/go-hashtag/parser.go:52.26,53.12 1 0
+github.com/itbasis/go-hashtag/parser.go:56.3,57.30 2 23
+github.com/itbasis/go-hashtag/parser.go:57.30,59.4 1 21
+github.com/itbasis/go-hashtag/parser.go:61.3,63.16 2 23
+github.com/itbasis/go-hashtag/parser.go:66.2,66.22 1 18
+github.com/itbasis/go-hashtag/parser.go:66.22,68.3 1 0
+github.com/itbasis/go-hashtag/parser.go:70.2,70.15 1 18
