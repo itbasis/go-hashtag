@@ -7,6 +7,7 @@ image:https://img.shields.io/github/checks-status/itbasis/go-hashtag/main[GitHub
 image:https://img.shields.io/github/go-mod/go-version/itbasis/go-hashtag[GitHub go.mod Go version]
 image:https://img.shields.io/badge/godoc-reference-blue.svg[link=https://pkg.go.dev/github.com/itbasis/go-hashtag]
 image:https://img.shields.io/github/v/release/itbasis/go-hashtag?include_prereleases[GitHub release (release name instead of tag name)]
+https://codecov.io/gh/itbasis/go-hashtag[image:https://codecov.io/gh/itbasis/go-hashtag/graph/badge.svg?token=jlLl74sKei[codecov]]
 https://goreportcard.com/report/github.com/itbasis/go-hashtag[image:https://goreportcard.com/badge/github.com/itbasis/go-hashtag[Go Report Card]]
 
 
