@@ -29,13 +29,10 @@ jobs:
           skip-pkg-cache: true
 
       - run: go get github.com/onsi/ginkgo/v2@latest && go install github.com/onsi/ginkgo/v2/ginkgo
-      - run: $(go env GOPATH)/bin/ginkgo --junit-report=report-ginkgo.xml ./...
-
-      - run: go get -u gotest.tools/gotestsum@latest && go install gotest.tools/gotestsum@latest
-      - run: $(go env GOPATH)/bin/gotestsum --junitfile report-testify.xml --format testname ./...
+      - run: $(go env GOPATH)/bin/ginkgo --junit-report=junit-report.xml ./...
 
       - name: Test Summary
         uses: test-summary/action@v2
         with:
-          paths: "report-*.xml"
+          paths: "junit-report.xml"
         if: always()

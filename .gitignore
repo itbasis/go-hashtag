@@ -2,7 +2,9 @@
 
 tmp.*
 
-report-*.xml
+# Go
+.coverage.out
+junit-report.xml
 
 # IntelliJ IDEs
 .idea/*

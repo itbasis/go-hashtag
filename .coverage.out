@@ -1,3 +1,0 @@
-github.com/itbasis/go-hashtag/parser.go:19:	NewParser	100.0%
-github.com/itbasis/go-hashtag/parser.go:31:	Parse		90.9%
-total:						(statements)	92.0%

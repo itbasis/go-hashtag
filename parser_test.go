@@ -1,17 +1,10 @@
 package hashtag_test
 
 import (
-	"testing"
-
 	"github.com/itbasis/go-hashtag"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )
-
-func TestParser(t *testing.T) {
-	RegisterFailHandler(Fail)
-	RunSpecs(t, "HashTag Parser")
-}
 
 var _ = Describe(
 	"Parsing", func() {
