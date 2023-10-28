@@ -4,6 +4,7 @@ tmp.*
 
 # Go
 .coverage.out
+.coverage-*.out
 junit-report.xml
 
 # IntelliJ IDEs
