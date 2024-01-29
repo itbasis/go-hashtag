@@ -6,7 +6,7 @@ Library for working with hashtags in the text
 image:https://img.shields.io/github/checks-status/itbasis/go-hashtag/main[GitHub branch checks state]
 image:https://img.shields.io/github/go-mod/go-version/itbasis/go-hashtag[GitHub go.mod Go version]
 image:https://img.shields.io/badge/godoc-reference-blue.svg[link=https://pkg.go.dev/github.com/itbasis/go-hashtag]
-image:https://img.shields.io/github/v/tag/itbasis/go-hashtag[GitHub tag (with filter)]
+image:https://img.shields.io/github/v/release/itbasis/go-hashtag[GitHub Release]
 https://codecov.io/gh/itbasis/go-hashtag[image:https://codecov.io/gh/itbasis/go-hashtag/graph/badge.svg?token=jlLl74sKei[codecov]]
 https://goreportcard.com/report/github.com/itbasis/go-hashtag[image:https://goreportcard.com/badge/github.com/itbasis/go-hashtag[Go Report Card]]
 
