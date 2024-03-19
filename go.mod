@@ -3,7 +3,7 @@ module github.com/itbasis/go-hashtag
 go 1.21
 
 require (
-	github.com/onsi/ginkgo/v2 v2.15.0
+	github.com/onsi/ginkgo/v2 v2.17.0
 	github.com/onsi/gomega v1.31.1
 )
 
