@@ -25,6 +25,8 @@ jobs:
           go-version: ${{ matrix.go }}
           check-latest: true
 
+      - run: make go-dependencies
+      - run: make go-generate && git diff --exit-code
       - run: make go-all-tests
 
       - name: Test Summary
