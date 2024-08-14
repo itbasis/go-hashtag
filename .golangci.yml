@@ -1,6 +1,7 @@
 #file: noinspection SpellCheckingInspection
 run:
   concurrency: 4
+  modules-download-mode: readonly
 
 # https://golangci-lint.run/usage/configuration/#linters-configuration
 linters:
@@ -11,7 +12,6 @@ linters:
     - govet
     - ineffassign
     - staticcheck
-    - unused
     - unused
     - asasalint
     - bodyclose
@@ -27,16 +27,19 @@ linters:
     - funlen
     - gocritic
     - gocyclo
-    - goerr113
+    - err113
     - goimports
-    - gomnd
+    - mnd
     - gomoddirectives
     - gosec
+    - govet
+    - grouper
     - misspell
     - nilerr
     - nlreturn
     - noctx
     - prealloc
+    - predeclared
     - promlinter
     - revive
     - wastedassign
@@ -52,7 +55,9 @@ linters:
     - wrapcheck
     - wsl
     - ginkgolinter
-#    - interfacebloat
+    - interfacebloat
+    - sloglint
+    - nilnil
 
 linters-settings:
   varnamelen:
@@ -60,3 +65,8 @@ linters-settings:
     ignore-map-index-ok: true
     ignore-names:
       - l
+  govet:
+    enable-all: true
+  nolintlint:
+    require-explanation: true
+    require-specific: true

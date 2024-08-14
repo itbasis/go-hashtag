@@ -17,16 +17,44 @@ https://goreportcard.com/report/github.com/itbasis/go-hashtag[image:https://gore
 go get -u github.com/itbasis/go-hashtag@latest
 ```
 
-== Example
+== Examples
 
+Case-insensitive:
 [source,go]
-```
+----
 package main
 
-import "github.com/itbasis/go-hashtag"
+import (
+	"fmt"
 
-func func main() {
-  text := "An example of a text with a #hashtag"
-  hashTags := NewParser(false).Parse(text)
+	"github.com/itbasis/go-hashtag"
+)
+
+func main() {
+  text := "An example of a text with a #hashtag #another #Another"
+  hashTags := hashtag.NewParser(false).Parse(text)
+  fmt.Println(hashTags)
+
+  // Output: ["hashtag": 1, "another": 2]
 }
-```
+----
+
+Case-sensitive:
+[source,go]
+----
+package main
+
+import (
+	"fmt"
+
+	"github.com/itbasis/go-hashtag"
+)
+
+func main() {
+  text := "An example of a text with a #hashtag #another #Another"
+  hashTags := hashtag.NewParser(true).Parse(text)
+  fmt.Println(hashTags)
+
+  // Output: ["hashtag": 1, "another": 1, "Another": 1]
+}
+----

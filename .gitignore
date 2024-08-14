@@ -3,8 +3,8 @@
 tmp.*
 
 # Go
-.coverage.out
-.coverage-*.out
+coverage-*.*
+ginkgo-coverage-*.*
 junit-report.xml
 
 # IntelliJ IDEs

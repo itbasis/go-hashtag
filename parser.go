@@ -11,9 +11,9 @@ const (
 )
 
 type Parser struct {
-	caseSensitive bool
-
 	re *regexp.Regexp
+
+	caseSensitive bool
 }
 
 func NewParser(caseSensitive bool) *Parser {
