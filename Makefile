@@ -12,6 +12,7 @@ go-update: go-dependencies
 
 go-generate:
 	go generate ./...
+	$(MAKE) go-update
 
 go-lint:
 	golangci-lint run
