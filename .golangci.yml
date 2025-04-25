@@ -1,72 +1,83 @@
-#file: noinspection SpellCheckingInspection
+version: "2"
 run:
   concurrency: 4
   modules-download-mode: readonly
-
-# https://golangci-lint.run/usage/configuration/#linters-configuration
 linters:
-  disable-all: true
+  default: none
   enable:
-    - errcheck
-    - gosimple
-    - govet
-    - ineffassign
-    - staticcheck
-    - unused
     - asasalint
     - bodyclose
     - containedctx
     - contextcheck
     - cyclop
     - dogsled
+    - err113
+    - errcheck
     - errname
     - errorlint
     - exhaustive
-    - exportloopref
     - forbidigo
     - funlen
+    - ginkgolinter
     - gocritic
     - gocyclo
-    - err113
-    - goimports
-    - mnd
     - gomoddirectives
     - gosec
     - govet
     - grouper
+    - ineffassign
+    - interfacebloat
     - misspell
+    - mnd
     - nilerr
+    - nilnil
     - nlreturn
     - noctx
     - prealloc
     - predeclared
     - promlinter
     - revive
-    - wastedassign
+    - sloglint
+    - staticcheck
     - tagliatelle
-    - tenv
     - testpackage
-    - typecheck
     - unconvert
     - unparam
+    - unused
     - usestdlibvars
     - varnamelen
+    - wastedassign
     - whitespace
     - wrapcheck
     - wsl
-    - ginkgolinter
-    - interfacebloat
-    - sloglint
-    - nilnil
-
-linters-settings:
-  varnamelen:
-    ignore-type-assert-ok: true
-    ignore-map-index-ok: true
-    ignore-names:
-      - l
-  govet:
-    enable-all: true
-  nolintlint:
-    require-explanation: true
-    require-specific: true
+  settings:
+    govet:
+      enable-all: true
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+    varnamelen:
+      ignore-names:
+        - l
+      ignore-type-assert-ok: true
+      ignore-map-index-ok: true
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$

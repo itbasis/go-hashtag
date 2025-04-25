@@ -31,11 +31,11 @@ import (
 )
 
 func main() {
-  text := "An example of a text with a #hashtag #another #Another"
-  hashTags := hashtag.NewParser(false).Parse(text)
-  fmt.Println(hashTags)
+	text := "An example of a text with a #hashtag #another #Another"
+	hashTags := hashtag.NewParser(false).Parse(text)
+	fmt.Println(hashTags)
 
-  // Output: ["hashtag": 1, "another": 2]
+	// Output: ["hashtag": 1, "another": 2]
 }
 ----
 
@@ -51,10 +51,10 @@ import (
 )
 
 func main() {
-  text := "An example of a text with a #hashtag #another #Another"
-  hashTags := hashtag.NewParser(true).Parse(text)
-  fmt.Println(hashTags)
+	text := "An example of a text with a #hashtag #another #Another"
+	hashTags := hashtag.NewParser(true).Parse(text)
+	fmt.Println(hashTags)
 
-  // Output: ["hashtag": 1, "another": 1, "Another": 1]
+	// Output: ["hashtag": 1, "another": 1, "Another": 1]
 }
 ----

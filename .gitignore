@@ -10,3 +10,6 @@ junit-report.xml
 # IntelliJ IDEs
 .idea/*
 !.idea/externalDependencies.xml
+
+# VSCode
+.vscode/
